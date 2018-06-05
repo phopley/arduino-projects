@@ -15,7 +15,7 @@
 
 #include <Servo.h> 
 #include <ros.h>
-#include <rodney_msgs/servo_array.h>
+#include <servo_msgs/servo_array.h>
 
 /* Define the PWM pins that the servos are connected to */
 #define SERVO_0 9
@@ -30,7 +30,7 @@ Servo servo1;
 Servo servo2;
 Servo servo3;
 
-void servo_cb( const rodney_msgs::servo_array& cmd_msg){
+void servo_cb( const servo_msgs::servo_array& cmd_msg){
   
   /* Which servo to drive */
   switch(cmd_msg.index)
@@ -63,7 +63,7 @@ void servo_cb( const rodney_msgs::servo_array& cmd_msg){
   digitalWrite(13, HIGH-digitalRead(13));  //toggle led  
 }
 
-ros::Subscriber<rodney_msgs::servo_array> sub("servo", servo_cb);
+ros::Subscriber<servo_msgs::servo_array> sub("servo", servo_cb);
 
 void setup(){
   pinMode(13, OUTPUT);
